@@ -23,7 +23,7 @@ const Dashboard = () => {
             <main className="max-w-7xl mx-auto px-4 md:px-6">
 
                 {/* Hero */}
-                <section className="mb-12">
+                <section className="my-12">
 
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
 
@@ -54,11 +54,15 @@ const Dashboard = () => {
 
                 </section>
 
+                <DashboardCards
+                    onSelectTemplate={handleSelectTemplate}
+                />
+
+                {/* <StatsCards /> */}
                 {/* Stats */}
-                <StatsCards />
 
                 {/* Main Content */}
-                <div className="grid lg:grid-cols-12 gap-10 mt-10">
+                <div className=" mt-10">
 
                     {/* Left */}
                     <div className="lg:col-span-8">
@@ -66,17 +70,13 @@ const Dashboard = () => {
                     </div>
 
                     {/* Right */}
-                    <div className="lg:col-span-4 space-y-8">
+                    {/* <div className="lg:col-span-4 space-y-8">
                         <ProfileSidebar />
                         <ActivityFeed />
                         <PremiumWidget />
-                    </div>
+                    </div> */}
 
                 </div>
-
-                <DashboardCards
-                    onSelectTemplate={handleSelectTemplate}
-                />
 
             </main>
 

@@ -15,8 +15,7 @@ const ResumeCard = ({
     draft = false,
 }) => {
     return (
-        <div className="group bg-white rounded-xl border border-slate-200 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-
+        <div className="group bg-white rounded-xl border border-slate-200 overflow-hidden transition-all duration-300">
             {/* Preview */}
             <div className="relative bg-slate-50 p-6 aspect-[4/3] flex items-center justify-center">
 
@@ -116,3 +115,5 @@ const ResumeCard = ({
 };
 
 export default ResumeCard;
+
+

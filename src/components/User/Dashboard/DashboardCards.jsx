@@ -6,6 +6,7 @@ import {
     recentResumes,
     getBuildTools,
 } from "./dashboardData";
+import ExecutiveBanner from "./ExecutiveBanner";
 
 const DashboardCards = ({ onSelectTemplate }) => {
     const navigate = useNavigate();
@@ -13,6 +14,43 @@ const DashboardCards = ({ onSelectTemplate }) => {
 
     return (
         <div className="space-y-12">
+
+
+            {/* AI Tools */}
+            <section>
+                <h2 className="text-2xl font-bold mb-6">
+                    Smart AI Toolbox
+
+
+                </h2>
+
+                <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {buildTools.map((tool) => (
+                        <div
+                            key={tool.title}
+                            onClick={tool.onClick}
+                            className="cursor-pointer bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-all"
+                        >
+                            <h3 className="font-semibold text-lg">
+                                {tool.title}
+                            </h3>
+
+                            <p className="text-slate-500 text-sm mt-2">
+                                {tool.desc}
+                            </p>
+
+                            <button
+                                className="mt-4 font-medium"
+                                style={{
+                                    color: tool.linkColor,
+                                }}
+                            >
+                                {tool.linkText}
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            </section>
 
             {/* Stats */}
             <section>
@@ -48,41 +86,9 @@ const DashboardCards = ({ onSelectTemplate }) => {
                 </div>
             </section>
 
-            {/* AI Tools */}
-            <section>
-                <h2 className="text-2xl font-bold mb-6">
-                    Smart AI Toolbox
+            <ExecutiveBanner />
 
-                    
-                </h2>
 
-                <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {buildTools.map((tool) => (
-                        <div
-                            key={tool.title}
-                            onClick={tool.onClick}
-                            className="cursor-pointer bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-all"
-                        >
-                            <h3 className="font-semibold text-lg">
-                                {tool.title}
-                            </h3>
-
-                            <p className="text-slate-500 text-sm mt-2">
-                                {tool.desc}
-                            </p>
-
-                            <button
-                                className="mt-4 font-medium"
-                                style={{
-                                    color: tool.linkColor,
-                                }}
-                            >
-                                {tool.linkText}
-                            </button>
-                        </div>
-                    ))}
-                </div>
-            </section>
 
             {/* Recent Resumes */}
             <section>

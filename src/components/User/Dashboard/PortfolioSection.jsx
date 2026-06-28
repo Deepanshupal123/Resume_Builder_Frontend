@@ -15,7 +15,7 @@ const PortfolioSection = () => {
                     Active Portfolio
                 </h2>
 
-                <div className="bg-slate-100 p-1 rounded-lg flex">
+                {/* <div className="bg-slate-100 p-1 rounded-lg flex">
 
                     <button
                         onClick={() => setGridView(true)}
@@ -36,7 +36,7 @@ const PortfolioSection = () => {
                     >
                         <List size={18} />
                     </button>
-                </div>
+                </div> */}
             </div>
 
             {/* Cards */}
@@ -62,7 +62,6 @@ const PortfolioSection = () => {
                 />
             </div>
 
-            <ExecutiveBanner />
         </section>
     );
 };

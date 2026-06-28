@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
+import UserLogin from '../../services/login';
 
 export default function Login() {
   const [isSignup, setIsSignup] = useState(false);
@@ -12,24 +13,25 @@ export default function Login() {
   const [googleLoading, setGoogleLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
-      const res = await fetch('https://resume-builder-7ngc.onrender.com/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-      if (!res.ok) return alert(data.message);
+      const data = await UserLogin(email, password);
+
+      console.log(data);
+
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
-      const redirectTo = location.state && location.state.from ? location.state.from : '/dashboard';
-      const after = location.state && location.state.after ? location.state.after : undefined;
-      navigate(redirectTo, { state: after ? { after } : {} });
+
+      navigate('/dashboard');
     } catch (err) {
-      alert('Unable to connect to server');
+      alert(
+        err.response?.data?.message || 'Login failed'
+      );
     } finally {
       setLoading(false);
     }
